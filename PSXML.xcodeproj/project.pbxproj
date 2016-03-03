@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		1DAC46E51C884062006063E1 /* Aggregate */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1DAC46E61C884063006063E1 /* Build configuration list for PBXAggregateTarget "Aggregate" */;
+			buildPhases = (
+				1DAC46E91C884068006063E1 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Aggregate;
+			productName = Aggregate;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		1D05520E1C869CB10041531C /* PSXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D05520D1C869CB10041531C /* PSXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D0552151C869CB10041531C /* PSXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D05520A1C869CB10041531C /* PSXML.framework */; };
@@ -176,6 +190,9 @@
 					1D0552131C869CB10041531C = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
+					1DAC46E51C884062006063E1 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 1D0552041C869CB10041531C /* Build configuration list for PBXProject "PSXML" */;
@@ -191,6 +208,7 @@
 			projectRoot = "";
 			targets = (
 				1D0552091C869CB10041531C /* PSXML */,
+				1DAC46E51C884062006063E1 /* Aggregate */,
 				1D0552131C869CB10041531C /* PSXMLTests */,
 			);
 		};
@@ -212,6 +230,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1DAC46E91C884068006063E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n#存放framework的目录\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/framework-universal\nSIMULATOR_OUTPUTFOLDER=${BUILD_DIR}/framework-iphonesimulator\nIPHONEOS_OUTPUTFOLDER=${BUILD_DIR}/framework-iphoneos\n\n#IPHONE_DEVICE_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos\nWORKSPACE_NAME=${PROJECT_NAME}.xcodeproj\nBUILD_SCHEME=${PROJECT_NAME}\n\nBUNDLE_DIR=\"Build/Products/Release-iphoneos\"\n\n#先删除已成生的framework, 再生成\nrm -rf \"${SIMULATOR_OUTPUTFOLDER}\"\nrm -rf \"${IPHONEOS_OUTPUTFOLDER}\"\nrm -rf \"${UNIVERSAL_OUTPUTFOLDER}\"\n\ncd ${SRCROOT}\n#模拟器\nxcodebuild -project ${WORKSPACE_NAME} -scheme ${BUILD_SCHEME} -arch i386 -arch x86_64 -sdk iphonesimulator -configuration \"RELEASE\" -derivedDataPath \"${SIMULATOR_OUTPUTFOLDER}\"\n\n#真机\nxcodebuild -project ${WORKSPACE_NAME} -scheme ${BUILD_SCHEME} -sdk iphoneos -configuration \"RELEASE\" -derivedDataPath \"${IPHONEOS_OUTPUTFOLDER}\"\n\n#合并模拟器和真机的架构\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\ncp -R \"${IPHONEOS_OUTPUTFOLDER}/${BUNDLE_DIR}/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\"\n\nlipo -create  \"${SIMULATOR_OUTPUTFOLDER}/${BUNDLE_DIR}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${IPHONEOS_OUTPUTFOLDER}/${BUNDLE_DIR}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\nrm -rf \"${SIMULATOR_OUTPUTFOLDER}\"\nrm -rf \"${IPHONEOS_OUTPUTFOLDER}\"\nopen \"${UNIVERSAL_OUTPUTFOLDER}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D0552051C869CB10041531C /* Sources */ = {
@@ -340,7 +374,9 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PSXML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yerl.PSXML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -356,7 +392,9 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PSXML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yerl.PSXML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -379,6 +417,20 @@
 				INFOPLIST_FILE = PSXMLTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yerl.PSXMLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1DAC46E71C884063006063E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1DAC46E81C884063006063E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -412,6 +464,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		1DAC46E61C884063006063E1 /* Build configuration list for PBXAggregateTarget "Aggregate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DAC46E71C884063006063E1 /* Debug */,
+				1DAC46E81C884063006063E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
