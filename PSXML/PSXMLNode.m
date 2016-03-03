@@ -41,7 +41,7 @@
     [self.elements makeObjectsPerformSelector:@selector(fixContent)];
 }
 
-- (NSArray<PSXMLNode *> *)elementWithName:(NSString *)name{
+- (NSArray<PSXMLNode *> *)elementsWithName:(NSString *)name{
     NSMutableArray<PSXMLNode *> *elements = [NSMutableArray new];
     for (PSXMLNode *node in self.elements) {
         if ([node.name isEqualToString:name]) {
@@ -49,6 +49,15 @@
         }
     }
     return elements;
+}
+
+- (PSXMLNode *)elementWithName:(NSString *)name{
+    for (PSXMLNode *node in self.elements) {
+        if ([node.name isEqualToString:name]) {
+            return node;
+        }
+    }
+    return nil;
 }
 
 - (PSXMLNode *)elementAtPath:(NSString *)keyPath{
@@ -79,6 +88,15 @@
         }
     }
     return result;
+}
+
+- (NSString *)attributeValue:(NSString *)attributeName{
+    for (PSXMLAttribute *attr in self.attributes) {
+        if ([attr.name isEqualToString:attributeName]) {
+            return attr.value;
+        }
+    }
+    return nil;
 }
 
 - (NSString *)description{
