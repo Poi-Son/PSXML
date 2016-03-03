@@ -6,12 +6,37 @@
 //  Copyright © 2016年 PoiSon. All rights reserved.
 //
 
-#import <PSXML/PSXMLNode.h>
+#import <Foundation/Foundation.h>
+#import <PSXML/PSXMLDefines.h>
 
 @class PSXMLAttribute;
 
 NS_ASSUME_NONNULL_BEGIN
-@interface PSXMLElement : PSXMLNode
+@interface PSXMLElement : NSObject
+- (instancetype)init PSXML_API_UNAVAILABLE("");
++ (instancetype)new PSXML_API_UNAVAILABLE("");
 
+- (instancetype)initWithName:(NSString *)name;
++ (instancetype)elementWithName:(NSString *)name;
+
+- (instancetype)initWithName:(NSString *)name andContent:(NSString *)content;
++ (instancetype)elementWithName:(NSString *)name andContent:(NSString *)content;
+
+@property (nonatomic, copy) NSString *name;
+
+@property (nonatomic, strong) PSXMLElement *parent;
+@property (nonatomic, strong) NSMutableArray<PSXMLElement *> *elements;
+@property (nonatomic, strong) NSMutableArray<PSXMLAttribute *> *attributes;
+@property (nonatomic, strong) NSMutableString *content;
+
+- (nullable PSXMLElement *)elementWithName:(NSString *)name;
+- (NSArray<PSXMLElement *> *)elementsWithName:(NSString *)name;
+
+- (nullable PSXMLElement *)elementAtPath:(NSString *)keyPath;
+- (NSArray<PSXMLElement *> *)elementsAtPath:(NSString *)keyPath;
+
+- (nullable NSString *)attributeValue:(NSString *)attributeName;
+
+- (void)fixContent;
 @end
 NS_ASSUME_NONNULL_END

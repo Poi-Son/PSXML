@@ -6,17 +6,17 @@
 //  Copyright © 2016年 PoiSon. All rights reserved.
 //
 
-#import <PSXML/PSXMLNode.h>
+#import <Foundation/Foundation.h>
 
 @class PSXMLElement;
-@class PSXMLAttribute;
 
-@interface PSXMLDocument : PSXMLNode
+NS_ASSUME_NONNULL_BEGIN
+@interface PSXMLDocument : NSObject
+@property (nonatomic, nullable, strong) NSString *xmlEncoding;
+@property (nonatomic, nullable, strong) PSXMLElement *rootElement;
+
 + (PSXMLDocument *)documentWithText:(NSString *)text;
 + (PSXMLDocument *)documentWithText:(NSString *)text error:(NSError **)error;
 
-+ (PSXMLDocument *)documentWithContentOfFile:(NSString *)file;
-+ (PSXMLDocument *)documentWithContentOfFile:(NSString *)file error:(NSError **)error;
-
-- (void)writeToContentOfFile:(NSString *)file;
 @end
+NS_ASSUME_NONNULL_END

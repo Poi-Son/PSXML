@@ -16,8 +16,7 @@
 		1D05522F1C869CD40041531C /* PSXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0552271C869CD40041531C /* PSXMLDocument.m */; };
 		1D0552301C869CD40041531C /* PSXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D0552281C869CD40041531C /* PSXMLElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D0552311C869CD40041531C /* PSXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0552291C869CD40041531C /* PSXMLElement.m */; };
-		1D0552321C869CD40041531C /* PSXMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D05522A1C869CD40041531C /* PSXMLNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1D0552331C869CD40041531C /* PSXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D05522B1C869CD40041531C /* PSXMLNode.m */; };
+		1D76ADDB1C882DCA0047014E /* PSXMLDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D76ADDA1C882D320047014E /* PSXMLDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +42,7 @@
 		1D0552271C869CD40041531C /* PSXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSXMLDocument.m; sourceTree = "<group>"; };
 		1D0552281C869CD40041531C /* PSXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSXMLElement.h; sourceTree = "<group>"; };
 		1D0552291C869CD40041531C /* PSXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSXMLElement.m; sourceTree = "<group>"; };
-		1D05522A1C869CD40041531C /* PSXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSXMLNode.h; sourceTree = "<group>"; };
-		1D05522B1C869CD40041531C /* PSXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSXMLNode.m; sourceTree = "<group>"; };
+		1D76ADDA1C882D320047014E /* PSXMLDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSXMLDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +93,7 @@
 				1D0552271C869CD40041531C /* PSXMLDocument.m */,
 				1D0552281C869CD40041531C /* PSXMLElement.h */,
 				1D0552291C869CD40041531C /* PSXMLElement.m */,
-				1D05522A1C869CD40041531C /* PSXMLNode.h */,
-				1D05522B1C869CD40041531C /* PSXMLNode.m */,
+				1D76ADDA1C882D320047014E /* PSXMLDefines.h */,
 			);
 			path = PSXML;
 			sourceTree = "<group>";
@@ -121,7 +118,7 @@
 				1D05522C1C869CD40041531C /* PSXMLAttribute.h in Headers */,
 				1D0552301C869CD40041531C /* PSXMLElement.h in Headers */,
 				1D05520E1C869CB10041531C /* PSXML.h in Headers */,
-				1D0552321C869CD40041531C /* PSXMLNode.h in Headers */,
+				1D76ADDB1C882DCA0047014E /* PSXMLDefines.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +218,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D0552331C869CD40041531C /* PSXMLNode.m in Sources */,
 				1D05522D1C869CD40041531C /* PSXMLAttribute.m in Sources */,
 				1D0552311C869CD40041531C /* PSXMLElement.m in Sources */,
 				1D05522F1C869CD40041531C /* PSXMLDocument.m in Sources */,
@@ -406,6 +402,7 @@
 				1D0552201C869CB10041531C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D0552211C869CB10041531C /* Build configuration list for PBXNativeTarget "PSXMLTests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +411,7 @@
 				1D0552231C869CB10041531C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
