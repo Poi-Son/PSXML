@@ -18,5 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (PSXMLDocument *)documentWithText:(NSString *)text;
 + (PSXMLDocument *)documentWithText:(NSString *)text error:(NSError **)error;
 
++ (PSXMLDocument *)documentWithData:(NSData *)data;
++ (PSXMLDocument *)documentWithData:(NSData *)data error:(NSError **)error;
 @end
 NS_ASSUME_NONNULL_END

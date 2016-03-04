@@ -17,30 +17,35 @@
 
 @implementation PSXMLDocument
 + (PSXMLDocument *)documentWithText:(NSString *)text{
-    NSParameterAssert(text.length > 0);
-    _PSXMLDelegate *delegate = [_PSXMLDelegate new];
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[text dataUsingEncoding:NSUTF8StringEncoding]];
-    parser.delegate = delegate;
-//    parser.shouldProcessNamespaces = YES;
-//    parser.shouldReportNamespacePrefixes = YES;
-    NSAssert([parser parse], @"An error occurred:%@", delegate.error);
-    return [delegate result];
+    return [self documentWithData:[text dataUsingEncoding:NSUTF8StringEncoding] error:nil];
 }
 
 + (PSXMLDocument *)documentWithText:(NSString *)text error:(NSError *__autoreleasing *)error{
-    if (text.length < 1) {
-        *error = [NSError errorWithDomain:@"cn.yerl.PSXML" code:-1000 userInfo:@{NSLocalizedDescriptionKey: @"Invalid parameter not satisfying: text.length > 0"}];
-        return nil;
+    return [self documentWithData:[text dataUsingEncoding:NSUTF8StringEncoding] error:error];
+}
+
++ (PSXMLDocument *)documentWithData:(NSData *)data{
+    NSError *error;
+    PSXMLDocument *doc = [self documentWithData:data error:&error];
+    if (error != nil) {
+        @throw error;
     }
+    return doc;
+}
+
++ (PSXMLDocument *)documentWithData:(NSData *)data error:(NSError * _Nullable __autoreleasing *)error{
+    NSParameterAssert(data.length > 0);
     _PSXMLDelegate *delegate = [_PSXMLDelegate new];
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[text dataUsingEncoding:NSUTF8StringEncoding]];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     parser.delegate = delegate;
     //    parser.shouldProcessNamespaces = YES;
     //    parser.shouldReportNamespacePrefixes = YES;
     if ([parser parse]) {
         return [delegate result];
     }else{
-        *error = [delegate error];
+        if (error != NULL) {
+            *error = delegate.error;
+        }
         return nil;
     }
 }
