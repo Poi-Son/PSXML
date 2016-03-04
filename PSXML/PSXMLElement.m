@@ -199,3 +199,36 @@
 }
 
 @end
+
+@implementation PSXMLElement (Chain)
++ (PSXMLElement * (^)(NSString *))createWithName{
+    return ^(NSString *name){
+        return [[PSXMLElement alloc] initWithName:name];
+    };
+}
+
+- (PSXMLElement *)and{
+    return self;
+}
+
+- (PSXMLElement * (^)(NSString *))content{
+    return ^(NSString *content){
+        self.content = [content mutableCopy];
+        return self;
+    };
+}
+
+- (PSXMLElement *(^)(NSString *, NSString *))addAttr{
+    return ^(NSString *attrName, NSString *attrValue){
+        [self.attributes addObject:[PSXMLAttribute attributeWithName:attrName andValue:attrValue]];
+        return self;
+    };
+}
+
+- (PSXMLElement *(^)(PSXMLElement *))addElement{
+    return ^(PSXMLElement *element){
+        [self.elements addObject:element];
+        return self;
+    };
+}
+@end

@@ -44,4 +44,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)fixContent;
 @end
+
+@interface PSXMLElement (Chain)
++ (PSXMLElement *(^)(NSString *))createWithName;
+- (PSXMLElement *)and;
+- (PSXMLElement *(^)(NSString *))content;
+- (PSXMLElement *(^)(NSString *, NSString *))addAttr;
+- (PSXMLElement *(^)(PSXMLElement *))addElement;
+@end
 NS_ASSUME_NONNULL_END
