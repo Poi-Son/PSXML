@@ -25,8 +25,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *name;
 
 @property (nonatomic, strong) PSXMLElement *parent;
+
 @property (nonatomic, strong) NSMutableArray<PSXMLElement *> *elements;
+- (instancetype)addElement:(PSXMLElement *)element;
+
 @property (nonatomic, strong) NSMutableArray<PSXMLAttribute *> *attributes;
+- (instancetype)addAttribute:(PSXMLAttribute *)attribute;
+
 @property (nonatomic, strong) NSMutableString *content;
 
 - (nullable PSXMLElement *)elementWithName:(NSString *)name;

@@ -59,6 +59,16 @@
     return charset;
 }
 
+- (instancetype)addElement:(PSXMLElement *)element{
+    [self.elements addObject:element];
+    return self;
+}
+
+- (instancetype)addAttribute:(PSXMLAttribute *)attribute{
+    [self.attributes addObject:attribute];
+    return self;
+}
+
 - (NSMutableString *)content{
     return _content ?: (_content = [NSMutableString new]);
 }
