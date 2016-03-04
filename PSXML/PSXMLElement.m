@@ -229,4 +229,11 @@ PSXMLElement *PSXMLElementWithName(NSString *name){
         return self;
     };
 }
+
+- (PSXMLElement *(^)(NSArray<PSXMLElement *> *))addElements{
+    return ^(NSArray<PSXMLElement *> *elements){
+        [self.elements addObjectsFromArray:elements];
+        return self;
+    };
+}
 @end

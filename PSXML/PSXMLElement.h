@@ -51,5 +51,6 @@ PSXML_EXTERN PSXMLElement *PSXMLElementWithName(NSString *name);
 - (PSXMLElement *(^)(NSString *))addContent;
 - (PSXMLElement *(^)(NSString *, NSString *))addAttr;
 - (PSXMLElement *(^)(PSXMLElement *))addElement;
+- (PSXMLElement *(^)(NSArray<PSXMLElement *> *))addElements;
 @end
 NS_ASSUME_NONNULL_END
