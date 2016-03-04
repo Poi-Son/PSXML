@@ -200,13 +200,11 @@
 
 @end
 
-@implementation PSXMLElement (Chain)
-+ (PSXMLElement * (^)(NSString *))createWithName{
-    return ^(NSString *name){
-        return [[PSXMLElement alloc] initWithName:name];
-    };
+PSXMLElement *PSXMLElementWithName(NSString *name){
+    return [[PSXMLElement alloc] initWithName:name];
 }
 
+@implementation PSXMLElement (Chain)
 - (PSXMLElement *)and{
     return self;
 }

@@ -45,8 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)fixContent;
 @end
 
+PSXML_EXTERN PSXMLElement *PSXMLElementWithName(NSString *name);
 @interface PSXMLElement (Chain)
-+ (PSXMLElement *(^)(NSString *))createWithName;
 - (PSXMLElement *)and;
 - (PSXMLElement *(^)(NSString *))content;
 - (PSXMLElement *(^)(NSString *, NSString *))addAttr;
