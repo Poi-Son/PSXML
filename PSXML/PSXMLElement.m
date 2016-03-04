@@ -209,9 +209,9 @@ PSXMLElement *PSXMLElementWithName(NSString *name){
     return self;
 }
 
-- (PSXMLElement * (^)(NSString *))content{
+- (PSXMLElement * (^)(NSString *))addContent{
     return ^(NSString *content){
-        self.content = [content mutableCopy];
+        [self.content appendString:content];
         return self;
     };
 }
