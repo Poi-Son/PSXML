@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'PSXML_Example', :exclusive => true do
+  pod 'PSXML', :path => '../'
+end
+
+target 'PSXML_Tests', :exclusive => true do
+  pod 'PSXML', :path => '../'
+
+  
+end
