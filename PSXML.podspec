@@ -29,5 +29,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'PSXML/Classes/**/*'
-  s.public_header_files = 'PSPromise/Classes/*.h'
+  s.public_header_files = 'PSXML/Classes/*.h'
 end
