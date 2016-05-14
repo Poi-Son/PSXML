@@ -1,6 +1,0 @@
-framework module Pods_PSXML_Example {
-  umbrella header "Pods-PSXML_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,11 +1,9 @@
 use_frameworks!
 
-target 'PSXML_Example', :exclusive => true do
-  pod 'PSXML', :path => '../'
-end
-
-target 'PSXML_Tests', :exclusive => true do
+target 'PSXML_Example' do
   pod 'PSXML', :path => '../'
 
-  
+  target 'PSXML_Tests' do
+    inherit! :search_paths 
+  end
 end
