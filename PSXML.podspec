@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "PSXML"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "PSXML."
 
 # This description is used to generate tags and improve search results.
@@ -21,10 +21,10 @@ Pod::Spec.new do |s|
   Objective-C 的XML简易解析工具
                        DESC
 
-  s.homepage         = "https://github.com/Poi-Son/PSXML"
+  s.homepage         = "https://github.com/alan-yeh/PSXML"
   s.license          = 'MIT'
-  s.author           = { "PoiSon" => "git@yerl.cn" }
-  s.source           = { :git => "https://github.com/Poi-Son/PSXML.git", :tag => s.version.to_s }
+  s.author           = { "Alan Yeh" => "git@yerl.cn" }
+  s.source           = { :git => "https://github.com/alan-yeh/PSXML.git", :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
